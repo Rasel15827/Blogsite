@@ -1,12 +1,13 @@
 <?php
+
 namespace App\Http\Controllers;
-use Illuminate\Support\Str;
 
 use Session;
-use App\Models\Catagory;
+use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
-class CatagoryController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class CatagoryController extends Controller
      */
     public function index()
     {
-        $catagories = Catagory::orderBy('created_at','DESC')->paginate(20);
-        return view('catagory.index', compact('catagories'));
+        $tags = Tag::orderBy('created_at','DESC')->paginate(20);
+        return view('tag.index', compact('tags'));
     }
 
     /**
@@ -26,7 +27,7 @@ class CatagoryController extends Controller
      */
     public function create()
     {
-        return view('catagory.create');
+        return view('tag.create');
     }
 
     /**
@@ -37,28 +38,26 @@ class CatagoryController extends Controller
      */
     public function store(Request $request)
     {
-      
         $this->validate($request,[
-            'name' => 'required|unique:catagories,name',
+            'name' => 'required|unique:tags,name',
         ]);
 
-        $catagory = Catagory::create([
+        $tag = Tag::create([
             'name' => $request-> name,
             'slug' =>  Str::slug($request->name, '-'),
             'description' => $request-> description
         ]);
-
-        Session::flash('success', 'Category Created Successfully');
+        Session::flash('success', 'Tag Created Successfully');
         return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Catagory  $catagory
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show(Catagory $catagory)
+    public function show(Tag $tag)
     {
         //
     }
@@ -66,47 +65,46 @@ class CatagoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Catagory  $catagory
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Catagory $catagory)
+    public function edit(Tag $tag)
     {
-        return view('catagory.edit', compact('catagory'));
+        return view('tag.edit', compact('tag'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Catagory  $catagory
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Catagory $catagory)
+    public function update(Request $request, Tag $tag)
     {
         $this->validate($request,[
-            'name' => "required|unique:catagories,name, $catagory->name",
+            'name' => "required|unique:tags,name,$tag->name",
         ]);
-       $catagory->name=$request->name;
-       $catagory->slug = Str::slug($request->name, '-');
-       $catagory->description = $request->description;
-       $catagory->save();
+       $tag->name=$request->name;
+       $tag->slug = Str::slug($request->name, '-');
+       $tag->description = $request->description;
+       $tag->save();
 
-       Session::flash('success', 'Category Updated Successfully');
+       Session::flash('success', 'Tags Updated Successfully');
        return redirect()->back();
-
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Catagory  $catagory
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Catagory $catagory)
+    public function destroy(Tag $tag)
     {
-        if($catagory)
+        if($tag)
         {
-            $catagory->delete();
+            $tag->delete();
             Session::flash('success', 'Category Deleted Successfully');
             return redirect()->route('catagory.index');
         }

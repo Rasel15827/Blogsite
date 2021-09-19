@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CatagoryController;
+use App\Http\Controllers\TagController;
 
 
 
@@ -38,6 +39,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
    });
    
    Route::resource('catagory',CatagoryController::class);
+   Route::resource('tag',TagController::class);
 
 
 });

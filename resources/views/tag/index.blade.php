@@ -2,15 +2,15 @@
 
 @section('admin_boady') 
 
-<h2>Categories</h2>
+<h2>Tags</h2>
 <div class="row">
             <div class="col-lg-12 mb-4">
               <!-- Simple Tables -->
               <div class="card">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Catagory List</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Tag List</h6>
                   <div>
-                      <a href="{{route('catagory.create')}}" class="btn btn-primary">Create Catagory</a>
+                      <a href="{{route('tag.create')}}" class="btn btn-primary">Create Tag</a>
                   </div>
                 </div>
                 <div class="table-responsive">
@@ -24,16 +24,16 @@
                       </tr>
                     </thead>
                     <tbody>
-                        @if($catagories->count())
-                        @foreach($catagories as $catagory)
+                      @if($tags->count())
+                        @foreach($tags as $tag)
                         <tr>
-                          <td>{{ $catagory->name }} </td>
-                          <td>{{ $catagory->slug }} </td>
+                          <td>{{ $tag->name }} </td>
+                          <td>{{ $tag->slug }} </td>
                           <td></td>
                           <td class="d-flex"> 
                           
-                          <a href="{{ route('catagory.edit',[$catagory->id]) }}" class="btn btn-sm  btn-primary "><i class="fas fa-edit"></i></a>
-                          <form action = "{{ route('catagory.destroy',[$catagory->id]) }} " method="post"> 
+                          <a href="{{ route('tag.edit',[$tag->id]) }}" class="btn btn-sm  btn-primary "><i class="fas fa-edit"></i></a>
+                          <form action = "{{ route('tag.destroy',[$tag->id]) }} " method="post"> 
                             @method('DELETE')
                           <button type="submit" class="btn btn-sm btn-danger ml-2 "><i class="fas fa-trash"></i></a>
                           </from>
@@ -43,7 +43,7 @@
                         @else
                           <tr>
                               <td colspan="5">
-                                <h5 class="text-center">No Categories found.</h5>
+                                <h5 class="text-center">No tags found.</h5>
                               </td>
                           </tr>
                         @endif

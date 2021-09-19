@@ -120,6 +120,12 @@
           <span>Categories</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('tag.index')}}">
+          <i class="fas fa-fw fa-tags"></i>
+          <span>Tags</span>
+        </a>
+      </li>
       <hr class="sidebar-divider">
       <div class="version" id="version-ruangadmin"></div>
     </ul>
