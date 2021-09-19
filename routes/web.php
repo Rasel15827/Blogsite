@@ -23,9 +23,11 @@ use App\Http\Controllers\CatagoryController;
 // Route::get('/', function () {
 //     return view('layout');
 // });
+
 Route::get('/',[MainController::class,'main'])->name('home.display');
 Route::get('/blog',[MainController::class,'blog'])->name('blog.display');
 Route::get('/contact',[MainController::class,'contact'])->name('contact.display');
+
 //Route::get('/admin',[AdminController::class,'controlBoard'])->name('controlBoard.display')->middleware('auth');
 
 //admin panel group routes

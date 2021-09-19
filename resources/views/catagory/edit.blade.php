@@ -5,7 +5,7 @@
 <div class="row">
 <div class="col-lg-12">
   <div class="py-3 d-flex flex-row align-items-center justify-content-between">
-<h2>Create Categories</h2>
+<h3>Edit Category - {{$catagory->name}}</h3>
 <a href="{{route('catagory.index')}}" class= "btn btn-primary">Back</a>
 </div>
 </div>
@@ -17,20 +17,20 @@
     
                 </div> -->
                 <div class="card-body">
-                  <form action="{{route('catagory.store')}}" method="POST">
+                  <form action="{{route('catagory.update', [$catagory->id])}}" method="POST">
                     @csrf
-                    @include('includes.errors')
+                    @method('PUT')
                     <div class="form-group">
                       <label for="catagoryName">Name</label>
                       <input name="name" type="text" class="form-control" id="catagoryName"
-                        placeholder="Enter Category Name" required>
+                        placeholder="Enter Category Name" value= "{{ $catagory->name }}" required>
                     </div>
                     <div class="form-group">
                       <label for="catagorydescription">Category Description</label>
-                      <textarea name="description" class="form-control" id="catagoryDescription" rows="3"></textarea>
+                      <textarea name="description" class="form-control" id="catagoryDescription" rows="3">{{ $catagory->description }}  </textarea>
                     </div>
                     <div class="form-group">
-                      <button type="submit" class="btn btn-primary" id="createCatagorybtn">Create</button>
+                      <button type="submit" class="btn btn-primary" id="createCatagorybtn">Update</button>
                     </div>
                   </form>
                 </div>

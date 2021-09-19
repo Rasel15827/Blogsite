@@ -37,10 +37,13 @@ class CatagoryController extends Controller
      */
     public function store(Request $request)
     {
-
+      
        if (Catagory::whereName($request->name)->count()==0){
 
-       
+        // $validated = $request->validate([
+        //     'name' => 'required|unique : catagories',
+        // ]);
+
         $catagory = Catagory::create([
             'name' => $request-> name,
             'slug' =>  Str::slug($request->name, '-'),
@@ -75,7 +78,7 @@ class CatagoryController extends Controller
      */
     public function edit(Catagory $catagory)
     {
-        //
+        return view('catagory.edit', compact('catagory'));
     }
 
     /**
@@ -87,7 +90,14 @@ class CatagoryController extends Controller
      */
     public function update(Request $request, Catagory $catagory)
     {
-        //
+       $catagory->name=$request->name;
+       $catagory->slug = Str::slug($request->name, '-');
+       $catagory->description = $request->description;
+       $catagory->save();
+
+       Session::flash('success', 'Category Updated Successfully');
+       return redirect()->back();
+
     }
 
     /**
@@ -98,6 +108,14 @@ class CatagoryController extends Controller
      */
     public function destroy(Catagory $catagory)
     {
-        //
+        if($catagory)
+        {
+            $catagory->delete();
+            Session::flash('success', 'Category Deleted Successfully');
+            return redirect()->route('catagory.index');
+        }
+        else{
+            echo "nothing" ;
+        }
     }
 }

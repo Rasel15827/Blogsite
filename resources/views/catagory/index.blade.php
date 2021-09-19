@@ -30,10 +30,12 @@
                           <td>{{ $catagory->slug }} </td>
                           <td></td>
                           <td class="d-flex"> 
-                            
-                          <a href="#" class="btn btn-primary "><i class="fas fa-edit"></i></a>
-                          <a href="#" class="btn btn-danger ml-2 "><i class="fas fa-trash"></i></a>
-
+                          
+                          <a href="{{ route('catagory.edit',[$catagory->id]) }}" class="btn btn-sm  btn-primary "><i class="fas fa-edit"></i></a>
+                          <form action = "{{ route('catagory.destroy',[$catagory->id]) }} " method="post"> 
+                            @method('DELETE')
+                          <button type="submit" class="btn btn-sm btn-danger ml-2 "><i class="fas fa-trash"></i></a>
+                          </from>
                           </td>
                       </tr>
                         @endforeach
