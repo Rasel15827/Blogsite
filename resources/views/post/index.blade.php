@@ -2,40 +2,46 @@
 
 @section('admin_boady') 
 
-<h2>Categories</h2>
+<h2>Posts</h2>
 <div class="row">
             <div class="col-lg-12 mb-4">
               <!-- Simple Tables -->
               <div class="card">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Catagory List</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Post List</h6>
                   <div>
-                      <a href="{{route('catagory.create')}}" class="btn btn-primary">Create Catagory</a>
+                      <a href="{{route('post.create')}}" class="btn btn-primary">Create Post</a>
                   </div>
                 </div>
                 <div class="table-responsive">
                   <table class="table align-items-center table-flush">
                     <thead class="thead-light">
                       <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Slug</th>
-                        <th>Post Count</th>
+                        <th>Post Id</th>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Catagory</th>
+                        <th>Author</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                        @if($catagories->count())
-                        @foreach($catagories as $catagory)
+                        @if($posts->count())
+                        @foreach($posts as $post)
                         <tr>
-                          <td>{{ $catagory->id }} </td>
-                          <td>{{ $catagory->name }} </td>
-                          <td>{{ $catagory->slug }} </td>
-                          <td></td>
+                          <td>{{ $post->id }} </td>
+                          <td> 
+                          <div style="max-width:70px; max-height:70px; overflow:hidden;">
+                              <img src = "{{asset( $post->image ) }}" class="img-fluid img-thumbnail" alt=""></img>
+                          </div>
+                          </td>
+                          <td>{{ $post->title }} </td>
+                          <td>{{ $post->catagory->name }} </td>
+                          <td>{{ $post->user->name }} </td>
                           <td class="d-flex"> 
                           
-                          <a href="{{ route('catagory.edit',[$catagory->id]) }}" class="btn btn-sm  btn-primary "><i class="fas fa-edit"></i></a>
-                          <form action = "{{ route('catagory.destroy',[$catagory->id]) }} " method="post"> 
+                          <a href="{{ route('post.edit',[$post->id]) }}" class="btn btn-sm  btn-primary "><i class="fas fa-edit"></i></a>
+                          <form action = "{{ route('post.destroy',[$post->id]) }} " method="post"> 
                             @method('DELETE')
                           <button type="submit" class="btn btn-sm btn-danger ml-2 "><i class="fas fa-trash"></i></a>
                           </from>
@@ -44,8 +50,8 @@
                         @endforeach
                         @else
                           <tr>
-                              <td colspan="5">
-                                <h5 class="text-center">No Categories found.</h5>
+                              <td colspan="6">
+                                <h5 class="text-center">No Posts found.</h5>
                               </td>
                           </tr>
                         @endif

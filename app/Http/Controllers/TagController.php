@@ -105,8 +105,8 @@ class TagController extends Controller
         if($tag)
         {
             $tag->delete();
-            Session::flash('success', 'Category Deleted Successfully');
-            return redirect()->route('catagory.index');
+            Session::flash('success', 'Tag Deleted Successfully');
+            return redirect()->route('tag.index');
         }
         else{
             echo "nothing" ;
