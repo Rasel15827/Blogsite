@@ -52,7 +52,7 @@
                             @method('DELETE')
             
                             <button type="submit" class="btn btn-sm btn-danger ml-2 "><i class="fas fa-trash"></i></a>
-                          </forsm>
+                          </form>
                           </td>
                       </tr>
                         @endforeach
