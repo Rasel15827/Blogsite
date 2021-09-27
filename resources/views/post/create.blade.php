@@ -36,6 +36,15 @@
                   <option value="{{$c->id}}"> {{$c->name}} </option>
                   @endforeach
                </div>
+
+               <div class="form-group mt-5">
+                        @foreach ($tags as $tag)
+                        <input type="checkbox" name="tags[]" id="tag{{$tag->id}}" value="{{$tag->id}}">
+                        <label  for="tag{{$tag->id}}">{{$tag->name}} </label>
+                        @endforeach
+               </div>
+
+
                <div class="form-group">
                   <textarea name="description" class="form-control" id="description" rows="3" placeholder="Type your post here...." required> {{old('description')}} </textarea>
                </div>

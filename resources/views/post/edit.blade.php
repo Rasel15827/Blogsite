@@ -42,6 +42,18 @@
                   <option value="{{$c->id}}" @if($post->catagory_id == $c->id) selected @endif > {{$c->name}} </option>
                   @endforeach
                </div>
+               <div class="form-group mt-5">
+                        @foreach ($tags as $tag)
+                        <input type="checkbox" name="tags[]" id="tag{{$tag->id}}" value="{{$tag->id}}"
+                        @foreach($post->tag as $t)
+                        @if ($tag->id == $t->id) checked @endif
+                        @endforeach
+
+                        >
+
+                        <label  for="tag{{$tag->id}}">{{$tag->name}} </label>
+                        @endforeach
+               </div>
                <div class="form-group">
                   <textarea name="description" class="form-control" id="description" rows="3" placeholder="Type your post here...." required> {{$post->description}} </textarea>
                </div>

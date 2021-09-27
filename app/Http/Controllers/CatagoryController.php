@@ -104,6 +104,7 @@ class CatagoryController extends Controller
      */
     public function destroy(Catagory $catagory)
     {
+
         if($catagory)
         {
             $catagory->delete();

@@ -6,10 +6,10 @@ use Session;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\Catagory;
+use App\Models\Tag;
 use Illuminate\Support\Str;
 use Validator;
 use Carbon\Carbon;
-use Ramsey\Uuid\Type\Time;
 
 class PostController extends Controller
 {
@@ -32,7 +32,8 @@ class PostController extends Controller
     public function create()
     {
         $catagories = Catagory::all();
-        return view('post.create', compact('catagories'));
+        $tags = Tag::all();
+        return view('post.create', compact(['catagories','tags']));
     }
 
     /**
@@ -43,6 +44,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $this->validate($request,[
             'title' => 'required|unique:posts,title',
              'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -60,6 +62,9 @@ class PostController extends Controller
             'published_at' => Carbon::now(),
 
         ]);
+
+        $post->tag()->attach($request->tags);
+
         if($request->has('image')){
         $image = $request->image;
         $image_new_name = time().".".$image->getClientOriginalExtension();
@@ -92,7 +97,8 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $catagories = Catagory::all();
-        return view('post.edit',compact(['post','catagories']));
+        $tags = Tag::all();
+        return view('post.edit',compact(['post','catagories','tags']));
     }
 
     /**
@@ -117,8 +123,8 @@ class PostController extends Controller
             $post->slug =  Str::slug($request->title, '-');
             $post->description = $request->description;
             $post->catagory_id = $request->catagory;
-            // $post->user_id => auth()->user()->id,
-            // $post->published_at => Carbon::now(),
+
+            $post->tag()->sync($request->tags);
 
         if($request->hasFile('image')){
         $image = $request->image;

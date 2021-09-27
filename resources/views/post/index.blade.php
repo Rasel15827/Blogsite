@@ -21,6 +21,7 @@
                         <th>Image</th>
                         <th>Title</th>
                         <th>Catagory</th>
+                        <th>Tags</th>
                         <th>Author</th>
                         <th>Action</th>
                       </tr>
@@ -37,14 +38,21 @@
                           </td>
                           <td>{{ $post->title }} </td>
                           <td>{{ $post->catagory->name }} </td>
+                          <td>
+                            @foreach($post->tag as $t)
+                                  <span class="badge badge-primary">{{ $t->name}}</span>
+                            @endforeach  
+                          </td>
                           <td>{{ $post->user->name }} </td>
                           <td class="d-flex"> 
                           
                           <a href="{{ route('post.edit',[$post->id]) }}" class="btn btn-sm  btn-primary "><i class="fas fa-edit"></i></a>
-                          <form action = "{{ route('post.destroy',[$post->id]) }} " method="post"> 
+                          <form action = "{{ route('post.destroy',[$post->id]) }} " method="POST"> 
+                            @csrf
                             @method('DELETE')
-                          <button type="submit" class="btn btn-sm btn-danger ml-2 "><i class="fas fa-trash"></i></a>
-                          </from>
+            
+                            <button type="submit" class="btn btn-sm btn-danger ml-2 "><i class="fas fa-trash"></i></a>
+                          </forsm>
                           </td>
                       </tr>
                         @endforeach
