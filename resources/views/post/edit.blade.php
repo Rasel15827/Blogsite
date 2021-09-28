@@ -66,3 +66,18 @@
 </div>   
 </div>
 @endsection
+<!-- adding summernote wizywig editor -->
+@section('style')
+  <link href="{{asset('admin_assets/css/summernote-bs4.min.css')}}" rel="stylesheet">
+@endsection
+
+@section('script')
+<script src="{{asset('admin_assets/js/summernote-bs4.min.js')}}"></script>
+<script>
+      $('#description').summernote({
+        placeholder: 'Start typing your post....',
+        tabsize: 2,
+        height: 300
+      });
+    </script>
+@endsection

@@ -13,7 +13,7 @@
   <link href="{{asset('admin_assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
   <link href="{{asset('admin_assets/css/ruang-admin.min.css')}}" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"  rel="stylesheet">
-
+  @yield('style')
 
 
 
@@ -312,6 +312,7 @@
   <script src="{{asset('admin_assets/js/ruang-admin.min.js')}}"></script>
   <script src="{{asset('admin_assets/js/ruang-admin.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  @yield('script')
   <script> 
     @if(Session::has('success'))
     toastr.success("{{ Session::get('success') }}");

@@ -34,7 +34,9 @@
                           
                           <a href="{{ route('tag.edit',[$tag->id]) }}" class="btn btn-sm  btn-primary "><i class="fas fa-edit"></i></a>
                           <form action = "{{ route('tag.destroy',[$tag->id]) }} " method="post"> 
-                            @method('DELETE')
+                          @csrf 
+                          @method('DELETE')
+
                           <button type="submit" class="btn btn-sm btn-danger ml-2 "><i class="fas fa-trash"></i></a>
                           </form>
                           </td>

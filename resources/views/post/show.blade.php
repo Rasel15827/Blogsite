@@ -6,24 +6,25 @@
             <div class="col-lg-12 mb-4">
               <!-- Simple Tables -->
               <div class="card p-4">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6>Post Details</h6>
+                  <div>
+                      <a href="{{route('post.index')}}" class="btn btn-primary">Back</a>
+                  </div>
                 </div>
-                <div class="table table-bordered table-pimary">
-                  <table class="table align-items-left table-flush">
-                    <thead class="thead-light">
-
-                    </thead>
+                <div class=" ">
+                  <table class="table table-bordered table-pimary align-items-left table-flush">
                     <tr>
                         <th style="width:300px">Image</th>
                         <td>  
-                        <div style="max-width:525px; max-height:500px; overflow:hidden;">
+                        <div style="max-width:325px; max-height:300px; overflow:hidden;">
                               <img src = "{{asset( $post->image ) }}" class="img-fluid img-thumbnail" alt=""></img>
                         </div>
                         </td>
                       </tr>
                       <tr>
                         <th style="width:300px">Title</th>
-                        <td><h3>{{$post->title}}</h3> </td>
+                        <td><h5>{{$post->title}}</h5> </td>
                       </tr>
                       <tr>
                         <th style="width:300px">Catagory</th>

@@ -10,7 +10,7 @@
    </div>
 </div>
 <div class="row">
-   <div class="col-lg-6">
+   <div class="col-lg-8">
       <div class="card mb-4">
          <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             </div> -->
@@ -46,7 +46,7 @@
 
 
                <div class="form-group">
-                  <textarea name="description" class="form-control" id="description" rows="3" placeholder="Type your post here...." required> {{old('description')}} </textarea>
+                  <textarea name="description" class="form-control" id="description" rows="3"required></textarea>
                </div>
                <div class="form-group">
                   <button type="submit" class="btn btn-primary" id="createPostbtn">Publish Post</button>
@@ -57,4 +57,21 @@
    </div>
 </div>
 </div>
+@endsection
+
+ 
+<!-- adding summernote wizywig editor -->
+@section('style')
+  <link href="{{asset('admin_assets/css/summernote-bs4.min.css')}}" rel="stylesheet">
+@endsection
+
+@section('script')
+<script src="{{asset('admin_assets/js/summernote-bs4.min.js')}}"></script>
+<script>
+      $('#description').summernote({
+        placeholder: 'Start typing your post....',
+        tabsize: 2,
+        height: 300
+      });
+    </script>
 @endsection
