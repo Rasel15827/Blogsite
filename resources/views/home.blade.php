@@ -65,102 +65,40 @@
             <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Trending</div>
         </div>
         <div class="owl-carousel owl-theme js" id="slider1">
+        @foreach($trendingPosts as $post)
             <div class="item px-2">
                 <div class="fh5co_latest_trading_img_position_relative">
-                    <div class="fh5co_latest_trading_img"><img src="images/allef-vinicius-108153.jpg" alt=""
+                    <div class="fh5co_latest_trading_img"><img src="{{$post->image}}" alt=""
                                                            class="fh5co_img_special_relative"/></div>
                     <div class="fh5co_latest_trading_img_position_absolute"></div>
                     <div class="fh5co_latest_trading_img_position_absolute_1">
-                        <a href="single.html" class="text-white"> Here's a new way to take better photos for instagram </a>
-                        <div class="fh5co_latest_trading_date_and_name_color"> Walter Johson - March 7,2017</div>
+                        <a href="{{ route ('post.display', ['slug'=> $post->slug]) }}" class="text-white">{{$post->title}} </a>
+                        <div class="fh5co_latest_trading_date_and_name_color"> {{ $post->user->name }} - {{ $post->created_at->format('M d, y')}}</div>
                     </div>
                 </div>
             </div>
-            <div class="item px-2">
-                <div class="fh5co_latest_trading_img_position_relative">
-                    <div class="fh5co_latest_trading_img"><img src="images/abigail-keenan-65477.jpg" alt="" class="fh5co_img_special_relative"/></div>
-                    <div class="fh5co_latest_trading_img_position_absolute"></div>
-                    <div class="fh5co_latest_trading_img_position_absolute_1">
-                        <a href="single.html" class="text-white"> Here's a new way to take better photos for instagram </a>
-                        <div class="fh5co_latest_trading_date_and_name_color"> Walter Johson - March 7,2017</div>
-                    </div>
-                </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_latest_trading_img_position_relative">
-                    <div class="fh5co_latest_trading_img"><img src="images/ryan-moreno-98837.jpg" alt="" class="fh5co_img_special_relative"/></div>
-                    <div class="fh5co_latest_trading_img_position_absolute"></div>
-                    <div class="fh5co_latest_trading_img_position_absolute_1">
-                        <a href="single.html" class="text-white"> Here's a new way to take better photos for instagram </a>
-                        <div class="fh5co_latest_trading_date_and_name_color"> Walter Johson - March 7,2017</div>
-                    </div>
-                </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_latest_trading_img_position_relative">
-                    <div class="fh5co_latest_trading_img"><img src="images/science-578x362.jpg" alt="" class="fh5co_img_special_relative"/></div>
-                    <div class="fh5co_latest_trading_img_position_absolute"></div>
-                    <div class="fh5co_latest_trading_img_position_absolute_1">
-                        <a href="single.html" class="text-white"> Here's a new way to take better photos for instagram </a>
-                        <div class="fh5co_latest_trading_date_and_name_color"> Walter Johson - March 7,2017</div>
-                    </div>
-                </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_latest_trading_img_position_relative">
-                    <div class="fh5co_latest_trading_img"><img src="images/nick-karvounis-78711.jpg" alt="" class="fh5co_img_special_relative"/></div>
-                    <div class="fh5co_latest_trading_img_position_absolute"></div>
-                    <div class="fh5co_latest_trading_img_position_absolute_1">
-                        <a href="single.html" class="text-white"> Here's a new way to take better photos for instagram </a>
-                        <div class="fh5co_latest_trading_date_and_name_color"> Walter Johson - March 7,2017</div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+
         </div>
     </div>
 </div>
 <div class="container-fluid pb-4 pt-5">
     <div class="container animate-box">
         <div>
-            <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">News</div>
+            <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Recent News</div>
         </div>
         <div class="owl-carousel owl-theme" id="slider2">
+            @foreach($recentPosts as $post)
             <div class="item px-2">
                 <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="images/39-324x235.jpg" alt=""/></div>
+                    <div class="fh5co_news_img"><img src="{{$post->image}}" alt=""/></div>
                     <div>
-                        <a href="single.html" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                        <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
+                        <a href="{{ route ('post.display', ['slug'=> $post->slug]) }}" class="d-block fh5co_small_post_heading"><span class="">{{$post->title}}</span></a>
+                        <div class="c_g"><i class="fa fa-clock-o"></i> {{ $post->created_at->format('M d, y')}}</div>
                     </div>
                 </div>
             </div>
-            <div class="item px-2">
-                <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="images/joe-gardner-75333.jpg" alt=""/></div>
-                    <div>
-                        <a href="single.html" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                        <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
-                    </div>
-                </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="images/ryan-moreno-98837.jpg" alt=""/></div>
-                    <div>
-                        <a href="single.html" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                        <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
-                    </div>
-                </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="images/seth-doyle-133175.jpg" alt=""/></div>
-                    <div>
-                        <a href="single.html" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                        <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>

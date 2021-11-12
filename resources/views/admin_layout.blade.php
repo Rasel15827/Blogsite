@@ -62,7 +62,13 @@
           <span>Posts</span>
         </a>
       </li>
+
+      <li class="nav-item text-center mt-5">
+      <a href="{{route('home.display')}} " target="_blank" class="btn btn-primary"> View Website</a>
+      </li>
     </ul>
+
+    
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">

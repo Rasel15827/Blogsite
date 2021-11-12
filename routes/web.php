@@ -26,8 +26,11 @@ use App\Http\Controllers\PostController;
 // });
 
 Route::get('/',[MainController::class,'main'])->name('home.display');
+Route::get('/post/{slug}',[MainController::class,'post'])->name('post.display');
+
 Route::get('/blog',[MainController::class,'blog'])->name('blog.display');
 Route::get('/contact',[MainController::class,'contact'])->name('contact.display');
+
 
 //Route::get('/admin',[AdminController::class,'controlBoard'])->name('controlBoard.display')->middleware('auth');
 

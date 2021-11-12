@@ -17,7 +17,7 @@
                   <table class="table align-items-center table-flush">
                     <thead class="thead-light">
                       <tr>
-                        <th>Post Id</th>
+                        <th>Id</th>
                         <th>Image</th>
                         <th>Title</th>
                         <th>Catagory</th>
